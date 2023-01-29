@@ -1,3 +1,3 @@
 export const Movies = () => {
-  return <h2>Trending films</h2>;
+  return <h2>Serch</h2>;
 };
