@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { Movies } from '../pages/Movies';
+import {MoviesDetails} from '../pages/MoviesDetails'
 import { Container, Header, Logo, Link } from './App.styled';
 
 export const App = () => {
@@ -11,7 +12,7 @@ export const App = () => {
           <span role="img" aria-label="computer icon">
             💻
           </span>{' '}
-          GoMerch Store
+          Filmoteka
         </Logo>
         <nav>
           <Link to="/" end>
@@ -23,8 +24,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        {/* <Route path="/products/:productId" element={<ProductDetails />} />
-        <Route path="*" element={<NotFound />} /> */}
+        <Route path="/products/:productId" element={<MoviesDetails />} />
       </Routes>
     </Container>
   );
