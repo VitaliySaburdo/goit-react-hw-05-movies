@@ -9,22 +9,19 @@ export const App = () => {
     <Container>
       <Header>
         <Logo>
-          <span role="img" aria-label="computer icon">
-            💻
+          <span role="img" aria-label="movie icon">
           </span>{' '}
           Filmoteka
         </Logo>
         <nav>
-          <Link to="/" end>
-            Home
-          </Link>
+          <Link to="/" end >Home</Link>
           <Link to="/movies">Movies</Link>
         </nav>
       </Header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/products/:productId" element={<MoviesDetails />} />
+        <Route path="/movies/:id" element={<MoviesDetails />} />
       </Routes>
     </Container>
   );

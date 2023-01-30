@@ -1,15 +1,16 @@
-// import { useParams } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
+import { getFilmDetails } from '../ApiService/ApiService'
 
 export const MoviesDetails = () => {
-//   const { id } = useParams();
-//   const product = getProductById(id);
+  const { id } = useParams();
+  const movie = getFilmDetails(id);
+  console.log(movie)
   return (
     <main>
       <img src="https://via.placeholder.com/960x240" alt="" />
       <div>
         <h2>
-          {/* Product - {product.name} - {id} */}
+          Product - {movie.name} - {id}
         </h2>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus
