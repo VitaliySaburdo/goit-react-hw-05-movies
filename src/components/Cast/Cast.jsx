@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFilmCast } from '../../ApiService/ApiService';
-import {Box} from './Cast.styled'
+import { Box } from './Cast.styled'
+import noImg from '../../images/No-Image-200x300.png'
+
 
 export const Cast = () => {
   const { id } = useParams();
@@ -22,15 +24,17 @@ export const Cast = () => {
   if (!cast) return;
 
   return (
+
     <div>
       <Box>
         {cast.map(({ id, profile_path, name, character }) => (
+          
           <li key={id}>
             <img
-              src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+              src={profile_path ? `https://image.tmdb.org/t/p/w500${profile_path}` : noImg}
               alt={name}
-              width="80"
-              height="100"
+              width="105"
+              height="158"
             />
             <p>{name}</p>
             <p>{character}</p>

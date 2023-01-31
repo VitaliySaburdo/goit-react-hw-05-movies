@@ -12,7 +12,7 @@ export const App = () => {
     <Container>
       <Header>
         <Logo>
-          <span role="img" aria-label="movie icon"></span> Filmoteka
+          <span role="img" aria-label="movie icon">Filmoteka</span> 
         </Logo>
         <nav>
           <Link to="/" end>
