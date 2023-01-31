@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { Container, Img } from './MovieItem.styled';
-export const MovieItem = ({
-  year,
-  userScore,
-  genresList,
-  poster_path,
-  overview,
-  title,
-}) => {
+
+
+export const MovieItem = ({ movieDetails }) => {
+  const { poster_path, overview, title, release_date, vote_average, genres } =
+    movieDetails;
+  const year = release_date.slice(0, 4);
+  const userScore = vote_average.toFixed(1) * 10;
+  const genresList = genres.map(genre => genre.name + ', ');
   return (
     <main>
       <Link to="/">Go Back</Link>
@@ -28,6 +28,15 @@ export const MovieItem = ({
           <p>{genresList}</p>
         </div>
       </Container>
+      <ul>
+        <li>
+          <Link to="cast" >Cast</Link>
+        </li>
+        <li>
+          <Link to="reviews">Reviews</Link>
+        </li>
+      </ul>
+      <Outlet />
     </main>
   );
 };

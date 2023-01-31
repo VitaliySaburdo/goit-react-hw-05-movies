@@ -10,9 +10,16 @@ export const fetchTrendingMovie = async page => {
   return response.data;
 };
 
-// Запрос детальной информации по id для модалки
+// Запрос детальной информации по id
 export const getFilmDetails = async id => {
   const url = `${BASE_URL}movie/${id}?api_key=${API_KEY}&language=en-US`;
+  const response = await axios.get(url);
+  return response.data;
+};
+
+// Запрос информации о актерах по id
+export const getFilmCast = async id => {
+  const url = `${BASE_URL}movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
   const response = await axios.get(url);
   return response.data;
 };
