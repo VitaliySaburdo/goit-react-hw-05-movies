@@ -1,5 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
-import { Container, Img } from './MovieItem.styled';
+import { Container, Img, Box } from './MovieItem.styled';
 
 
 export const MovieItem = ({ movieDetails }) => {
@@ -28,14 +28,14 @@ export const MovieItem = ({ movieDetails }) => {
           <p>{genresList}</p>
         </div>
       </Container>
-      <ul>
+      <Box>
         <li>
           <Link to="cast" >Cast</Link>
         </li>
         <li>
           <Link to="reviews">Reviews</Link>
         </li>
-      </ul>
+      </Box>
       <Outlet />
     </main>
   );

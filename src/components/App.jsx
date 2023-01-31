@@ -2,8 +2,10 @@ import { Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { Movies } from '../pages/Movies';
 import { MoviesDetails } from '../pages/MoviesDetails';
-import { Container, Header, Logo, Link } from './App.styled';
 import { Cast } from './Cast/Cast';
+import {Reviews} from './Reviews/Reviews'
+import { Container, Header, Logo, Link } from './App.styled';
+
 
 export const App = () => {
   return (
@@ -24,6 +26,7 @@ export const App = () => {
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/:id" element={<MoviesDetails />}>
           <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
       </Routes>
     </Container>

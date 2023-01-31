@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFilmCast } from '../../ApiService/ApiService';
+import {Box} from './Cast.styled'
 
 export const Cast = () => {
   const { id } = useParams();
@@ -22,7 +23,7 @@ export const Cast = () => {
 
   return (
     <div>
-      <ul>
+      <Box>
         {cast.map(({ id, profile_path, name, character }) => (
           <li key={id}>
             <img
@@ -35,7 +36,7 @@ export const Cast = () => {
             <p>{character}</p>
           </li>
         ))}
-      </ul>
+      </Box>
     </div>
   );
 };

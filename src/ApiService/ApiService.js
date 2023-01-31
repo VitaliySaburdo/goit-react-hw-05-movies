@@ -23,3 +23,10 @@ export const getFilmCast = async id => {
   const response = await axios.get(url);
   return response.data;
 };
+
+// Запрос описания по id
+export const getFilmReviews = async id => {
+  const url = `${BASE_URL}movie/${id}/reviews?api_key=${API_KEY}&language=en-US`;
+  const response = await axios.get(url);
+  return response.data;
+};
