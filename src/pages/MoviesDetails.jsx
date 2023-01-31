@@ -1,26 +1,43 @@
-import { useParams } from "react-router-dom";
-import { getFilmDetails } from '../ApiService/ApiService'
+import { useParams} from 'react-router-dom';
+import { getFilmDetails } from '../ApiService/ApiService';
+import { useEffect, useState } from 'react';
+import { MovieItem } from 'components/MovieItem/MovieItem';
 
 export const MoviesDetails = () => {
   const { id } = useParams();
-  const movie = getFilmDetails(id);
-  console.log(movie)
+  const [movieDetails, setMovieDetails] = useState(null);
+
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+    async function APIfetchMovieDetails() {
+      try {
+        const movieDetails = await getFilmDetails(id);
+        setMovieDetails(movieDetails);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    APIfetchMovieDetails();
+  }, [id]);
+
+  if (!movieDetails) return;
+  
+  const { poster_path, overview, title, release_date, vote_average, genres } =
+    movieDetails;
+  const year = release_date.slice(0, 4);
+  const userScore = vote_average.toFixed(1) * 10;
+  const genresList = genres.map(genre => genre.name + ', ');
+
   return (
-    <main>
-      <img src="https://via.placeholder.com/960x240" alt="" />
-      <div>
-        <h2>
-          Product - {movie.name} - {id}
-        </h2>
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus
-          sunt excepturi nesciunt iusto dignissimos assumenda ab quae cupiditate
-          a, sed reprehenderit? Deleniti optio quasi, amet natus reiciendis
-          atque fuga dolore? Lorem, ipsum dolor sit amet consectetur adipisicing
-          elit. Impedit suscipit quisquam incidunt commodi fugiat aliquam
-          praesentium ipsum quos unde voluptatum?
-        </p>
-      </div>
-    </main>
+    <MovieItem
+      year={year}
+      userScore={userScore}
+      genresList={genresList}
+      poster_path={poster_path}
+      overview={overview}
+      title={title}
+    />
   );
 };
