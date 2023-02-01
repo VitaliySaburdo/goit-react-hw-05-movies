@@ -15,7 +15,7 @@ export const App = () => {
           <span role="img" aria-label="movie icon">Filmoteka</span> 
         </Logo>
         <nav>
-          <Link to="/" end>
+          <Link to="/">
             Home
           </Link>
           <Link to="/movies">Movies</Link>
