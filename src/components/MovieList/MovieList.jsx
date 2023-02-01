@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import noPoster from '../../images/No_image_poster.png'
 
 import { Container, Img, ProductName } from './MovieList.styled';
 
@@ -9,7 +10,7 @@ export const MovieList = ({ movies }) => {
         <li key={movie.id}>
           <Link to={`/movies/${movie.id}`}>
             <Img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : noPoster}
               alt={movie.title}
               width="395"
               height="574"
