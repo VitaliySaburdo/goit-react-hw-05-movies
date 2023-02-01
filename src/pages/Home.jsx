@@ -1,3 +1,4 @@
+import { Buttons } from 'components/Buttons/Buttons';
 import { useEffect, useState } from 'react';
 import { fetchTrendingMovie } from '../ApiService/ApiService';
 import { MovieList } from '../components/MovieList/MovieList';
@@ -34,11 +35,13 @@ export const Home = () => {
       <h2>Trending today</h2>
       <MovieList
         movies={movies}
-        previousPage={onPreviousPage}
+        
+      />
+      <Buttons previousPage={onPreviousPage}
         nextPage={onNextPage}
         page={page}
-        totalPages={totalPages}
-      />
+        totalPages={totalPages}/>
+
     </>
   );
 };

@@ -12,7 +12,6 @@ export const Reviews = () => {
       try {
         const { results } = await getFilmReviews(id);
         setReview(results);
-        console.log(results)
         if (results.length === 0) {
           return 'aslkdjkjadk'
         }
