@@ -33,9 +33,9 @@ export const Movies = () => {
     APIfetchMovies();
   }, [movieName, page, movies]);
 
-  const formSubmitHendler = query => {
-    setSearchParams({ query });
-    setPage(1);
+   const updateQueryString = (query) => {
+    const nextParams = query !== "" ? { query } : {};
+    setSearchParams(nextParams);
   };
   const onNextPage = () => {
     setPage(prevState => prevState + 1);
@@ -46,7 +46,7 @@ export const Movies = () => {
 
   return (
     <>
-      <SearchForm onSubmit={formSubmitHendler} />
+      <SearchForm onChange={updateQueryString} />
       <MovieList movies={movies} />
       {showButtons && (
         <Buttons
