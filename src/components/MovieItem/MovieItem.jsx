@@ -1,5 +1,6 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Container, Img, Box } from './MovieItem.styled';
+
 
 
 export const MovieItem = ({ movieDetails }) => {
@@ -8,9 +9,12 @@ export const MovieItem = ({ movieDetails }) => {
   const year = release_date.slice(0, 4);
   const userScore = vote_average.toFixed(1) * 10;
   const genresList = genres.map(genre => genre.name + ', ');
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/movies';
+
   return (
     <main>
-      <Link to="/">Go Back</Link>
+      <Link to={backLinkHref}>Go Back</Link>
       <Container>
         <Img
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
