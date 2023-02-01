@@ -9,7 +9,6 @@ export const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPage] = useState(1);
-  const [showButtons, setShowButtons] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const movieName = searchParams.get('query') ?? '';
@@ -23,9 +22,6 @@ export const Movies = () => {
         const { total_pages, results } = await getFilmSearch(movieName, page);
         setTotalPage(total_pages);
         setMovies(results);
-        if (movies.length !== 0) {
-          setShowButtons(true);
-        }
       } catch (error) {
         console.log(error);
       }
@@ -48,7 +44,7 @@ export const Movies = () => {
     <>
       <SearchForm onChange={updateQueryString} />
       <MovieList movies={movies} />
-      {showButtons && (
+      {totalPages > 1 && (
         <Buttons
           previousPage={onPreviousPage}
           nextPage={onNextPage}
