@@ -1,15 +1,18 @@
+import React from 'react';
 import { useState } from 'react';
 import {Form, SearchFormButton,  SearchFormInput} from './SearchForm.styled'
 
 
+
 export const SearchForm = ({onSubmit}) => {
   const [query, setQuery] = useState('');
+  
 
   const handleSubmit = e => {
     e.preventDefault();
     if (query.trim() === '') {
-      alert('no query');
-      //   return toast.warn('Please, enter image name.');
+       alert('Please, enter movie name.')
+      return 
     }
     onSubmit(query);
     resetForm();
@@ -23,6 +26,7 @@ export const SearchForm = ({onSubmit}) => {
   };
 
   return (
+    <>
     <Form onSubmit={handleSubmit}>
       <SearchFormButton type="submit">
         <span>Search</span>
@@ -36,6 +40,8 @@ export const SearchForm = ({onSubmit}) => {
         autoComplete="off"
         autoFocus
       />
-    </Form>
+      </Form>
+      
+      </>
   );
 };
