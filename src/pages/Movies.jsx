@@ -4,7 +4,9 @@ import { SearchForm } from '../components/SearchForm/SearchForm';
 import { MovieList } from '../components/MovieList/MovieList';
 import { Buttons } from 'components/Buttons/Buttons';
 import { useSearchParams } from 'react-router-dom';
-import {Loader} from '../components/Loader/Loder'
+import { Loader } from '../components/Loader/Loder';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Movies = () => {
@@ -24,9 +26,13 @@ const Movies = () => {
       }
       try {
         const { total_pages, results } = await getFilmSearch(movieName, page);
-        setTotalPage(total_pages);
+        if (results.length !== 0) {
+          setTotalPage(total_pages);
         setMovies(results);
-        setIsLoading(true)
+        setIsLoading(true);
+        } else {
+          toast.warn(`Movies is not found`);
+        }
       } catch (error) {
         console.log(error);
       } finally {
@@ -49,9 +55,9 @@ const Movies = () => {
   return (
     <>
       <SearchForm onSubmit={formSubmitHendler} />
-      {isLoading && <Loader/>}
-      {movies.length > 0 && <MovieList movies={movies} />}
-      {(movieName && movies.length === 0) && <h4>Movie not found</h4>}
+      {isLoading && <Loader />}
+      <ToastContainer position="top-center" />
+      <MovieList movies={movies} />
       {totalPages > 1 && (
         <Buttons
           previousPage={onPreviousPage}
