@@ -5,7 +5,7 @@ import { Box } from './Cast.styled'
 import noImg from '../../images/No-Image-200x300.png'
 
 
-export const Cast = () => {
+const Cast = () => {
   const { id } = useParams();
   const [cast, setCast] = useState([]);
 
@@ -44,3 +44,5 @@ export const Cast = () => {
     </div>
   );
 };
+
+export default Cast

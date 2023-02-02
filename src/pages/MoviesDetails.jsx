@@ -3,7 +3,7 @@ import { getFilmDetails } from '../ApiService/ApiService';
 import { useEffect, useState } from 'react';
 import { MovieItem } from 'components/MovieItem/MovieItem';
 
-export const MoviesDetails = () => {
+const MoviesDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
 
@@ -26,3 +26,5 @@ export const MoviesDetails = () => {
 
   return <MovieItem movieDetails={movieDetails} />;
 };
+
+export default MoviesDetails

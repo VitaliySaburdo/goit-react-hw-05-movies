@@ -5,7 +5,7 @@ import { MovieList } from '../components/MovieList/MovieList';
 import { Buttons } from 'components/Buttons/Buttons';
 import { useSearchParams } from 'react-router-dom';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPage] = useState(1);
@@ -55,3 +55,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies
