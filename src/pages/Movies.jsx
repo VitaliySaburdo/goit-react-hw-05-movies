@@ -45,13 +45,13 @@ const Movies = () => {
   const onPreviousPage = () => {
     setPage(prevState => prevState - 1);
   };
-
+console.log(movies.length)
   return (
     <>
       <SearchForm onSubmit={formSubmitHendler} />
       {isLoading && <Loader/>}
       {movies.length > 0 && <MovieList movies={movies} />}
-      {(movies.length  === 0 && movieName) && <h2>Not find movies</h2>}
+      {(movieName) && <h3>Not find movies</h3>}
       {totalPages > 1 && (
         <Buttons
           previousPage={onPreviousPage}
