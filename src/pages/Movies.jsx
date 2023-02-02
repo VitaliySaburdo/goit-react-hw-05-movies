@@ -45,7 +45,7 @@ const Movies = () => {
   const onPreviousPage = () => {
     setPage(prevState => prevState - 1);
   };
-console.log(movies.length)
+
   return (
     <>
       <SearchForm onSubmit={formSubmitHendler} />
