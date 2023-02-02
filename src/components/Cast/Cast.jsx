@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getFilmCast } from '../../ApiService/ApiService';
 import { Box } from './Cast.styled'
-import noImg from '../../images/No-Image-200x300.png'
+import noImg from '../../images/No-Image-200x300.png';
+import PropTypes from 'prop-types';
 
 
 const Cast = () => {
@@ -46,3 +47,14 @@ const Cast = () => {
 };
 
 export default Cast
+
+Cast.prototype = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      profile_path: PropTypes.string,
+      name: PropTypes.string,
+      character: PropTypes.string,
+    })
+  )
+}

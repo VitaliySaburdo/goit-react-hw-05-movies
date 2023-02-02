@@ -1,6 +1,7 @@
 import { BtnPrv, BtnNxt } from './Buttons.styled';
+import PropTypes from 'prop-types';
 
-export const Buttons = ({nextPage, previousPage, page, totalPages}) => {
+export const Buttons = ({ nextPage, previousPage, page, totalPages }) => {
   return (
     <div>
       <BtnPrv
@@ -20,4 +21,11 @@ export const Buttons = ({nextPage, previousPage, page, totalPages}) => {
       </BtnNxt>
     </div>
   );
+};
+
+Buttons.prototype = {
+  nextPage: PropTypes.func,
+  previousPage: PropTypes.func,
+  totalPages: PropTypes.number,
+  page: PropTypes.number,
 };

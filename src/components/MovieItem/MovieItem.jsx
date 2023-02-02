@@ -6,6 +6,7 @@ import { Suspense } from 'react';
 export const MovieItem = ({ movieDetails }) => {
   const { poster_path, overview, title, release_date, vote_average, genres } =
     movieDetails;
+  
   const year = release_date.slice(0, 4);
   const userScore = vote_average.toFixed(1) * 10;
   const genresList = genres.map(genre => genre.name + ', ');
