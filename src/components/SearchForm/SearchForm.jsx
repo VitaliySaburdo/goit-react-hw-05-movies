@@ -11,7 +11,6 @@ export const SearchForm = ({ onSubmit }) => {
     e.preventDefault();
     if (query.trim() === '') {
       toast('Please enter youre query');
-      //   return toast.warn('Please, enter image name.');
     }
     onSubmit(query);
     resetForm();
