@@ -2,6 +2,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Container, Img, Box } from './MovieItem.styled';
 import { Loader } from '../Loader/Loder';
 import { Suspense } from 'react';
+import noPoster from '../../images/No_image_poster.png';
 import PropTypes from 'prop-types';
 
 export const MovieItem = ({ movieDetails }) => {
@@ -19,7 +20,7 @@ export const MovieItem = ({ movieDetails }) => {
       <Link to={backLinkHref}>Go Back</Link>
       <Container>
         <Img
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : noPoster}
           alt=""
           width={300}
         />
