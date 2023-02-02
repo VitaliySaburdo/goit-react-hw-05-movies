@@ -51,7 +51,7 @@ const Movies = () => {
       <SearchForm onSubmit={formSubmitHendler} />
       {isLoading && <Loader/>}
       {movies.length > 0 && <MovieList movies={movies} />}
-      {(movieName) && <h3>Not find movies</h3>}
+      {(movieName) && <h4>Not find movies</h4>}
       {totalPages > 1 && (
         <Buttons
           previousPage={onPreviousPage}
