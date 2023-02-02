@@ -31,7 +31,7 @@ const Movies = () => {
         setMovies(results);
         setIsLoading(true);
         } else {
-          toast.warn(`Movies is not found`);
+          toast.warn(`Movies ${movieName} is not found`);
         }
       } catch (error) {
         console.log(error);
