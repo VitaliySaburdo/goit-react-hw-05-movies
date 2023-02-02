@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {Form, SearchFormButton,  SearchFormInput} from './SearchForm.styled'
-
+import PropTypes from 'prop-types';
 
 export const SearchForm = ({onSubmit}) => {
   const [query, setQuery] = useState('');
@@ -8,7 +8,7 @@ export const SearchForm = ({onSubmit}) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (query.trim() === '') {
-      alert('no query');
+      alert('Please enter youre query');
       //   return toast.warn('Please, enter image name.');
     }
     onSubmit(query);
@@ -39,3 +39,7 @@ export const SearchForm = ({onSubmit}) => {
     </Form>
   );
 };
+
+SearchForm.prototype = {
+ onSubmit: PropTypes.func
+}

@@ -41,7 +41,7 @@ const Home = () => {
       <h2>Trending today</h2>
       {isLoading && <Loader />}
       {movies.length  > 0 &&<MovieList movies={movies} />}
-      {!totalPages && (
+      {totalPages > 1 && (
         <Buttons
           previousPage={onPreviousPage}
           nextPage={onNextPage}

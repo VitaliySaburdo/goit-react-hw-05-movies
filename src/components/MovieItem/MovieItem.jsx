@@ -1,12 +1,13 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Container, Img, Box } from './MovieItem.styled';
-import { Loader } from '../Loader/Loder'
+import { Loader } from '../Loader/Loder';
 import { Suspense } from 'react';
+import PropTypes from 'prop-types';
 
 export const MovieItem = ({ movieDetails }) => {
   const { poster_path, overview, title, release_date, vote_average, genres } =
     movieDetails;
-  
+
   const year = release_date.slice(0, 4);
   const userScore = vote_average.toFixed(1) * 10;
   const genresList = genres.map(genre => genre.name + ', ');
@@ -41,9 +42,22 @@ export const MovieItem = ({ movieDetails }) => {
           <Link to="reviews">Reviews</Link>
         </li>
       </Box>
-      <Suspense fallback={<Loader/>}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </main>
   );
+};
+
+MovieItem.prototype = {
+  movieDetails: PropTypes.objectOf(
+    PropTypes.shape({
+    poster_path: PropTypes.string,
+    overview: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.string,
+    genres: PropTypes.object,
+  }),
+  )
 };

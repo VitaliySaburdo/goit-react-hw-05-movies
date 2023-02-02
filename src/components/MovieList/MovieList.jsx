@@ -1,5 +1,6 @@
 import { Link, useLocation  } from 'react-router-dom';
-import noPoster from '../../images/No_image_poster.png'
+import noPoster from '../../images/No_image_poster.png';
+import PropTypes from 'prop-types';
 
 import { Container, Img, ProductName } from './MovieList.styled';
 
@@ -22,4 +23,15 @@ export const MovieList = ({ movies }) => {
       ))}
     </Container>
   );
+};
+
+MovieList.prototype = {
+  movieDetails: PropTypes.shape({
+    poster_path: PropTypes.string,
+    overview: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.string,
+    genres: PropTypes.object,
+  }),
 };
