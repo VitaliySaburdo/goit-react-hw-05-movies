@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import {Form, SearchFormButton,  SearchFormInput} from './SearchForm.styled'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Form, SearchFormButton, SearchFormInput } from './SearchForm.styled';
 import PropTypes from 'prop-types';
 
-export const SearchForm = ({onSubmit}) => {
+export const SearchForm = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
     if (query.trim() === '') {
-      alert('Please enter youre query');
+      toast('Please enter youre query');
       //   return toast.warn('Please, enter image name.');
     }
     onSubmit(query);
@@ -23,23 +25,28 @@ export const SearchForm = ({onSubmit}) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <SearchFormButton type="submit">
-        <span>Search</span>
-      </SearchFormButton>
+    <>
+      <Form onSubmit={handleSubmit}>
+        <SearchFormButton type="submit">
+          <span>Search</span>
+        </SearchFormButton>
 
-      <SearchFormInput
-        onChange={handleQueryChange}
-        value={query}
-        type="text"
-        placeholder="Search movie"
-        autoComplete="off"
-        autoFocus
-      />
-    </Form>
+        <SearchFormInput
+          onChange={handleQueryChange}
+          value={query}
+          type="text"
+          placeholder="Search movie"
+          autoComplete="off"
+          autoFocus
+        />
+      </Form>
+      <div>
+        <ToastContainer position="top-center" />
+      </div>
+    </>
   );
 };
 
 SearchForm.prototype = {
- onSubmit: PropTypes.func
-}
+  onSubmit: PropTypes.func,
+};
