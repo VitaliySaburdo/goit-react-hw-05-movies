@@ -1,5 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Container, Img, Box } from './MovieItem.styled';
+import { Loader } from '../Loader/Loder'
+import { Suspense } from "react";
 
 
 
@@ -40,7 +42,9 @@ export const MovieItem = ({ movieDetails }) => {
           <Link to="reviews">Reviews</Link>
         </li>
       </Box>
-      <Outlet />
+<Suspense fallback={<Loader/>}>
+        <Outlet />
+        </Suspense>
     </main>
   );
 };
