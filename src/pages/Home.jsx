@@ -40,12 +40,12 @@ const Home = () => {
       <h2>Trending today</h2>
       {isLoading && <Loader />}
       <MovieList movies={movies} />
-      <Buttons
+     {!isLoading && <Buttons
         previousPage={onPreviousPage}
         nextPage={onNextPage}
         page={page}
         totalPages={totalPages}
-      />
+      />}
     </>
   );
 };
