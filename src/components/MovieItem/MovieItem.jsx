@@ -1,9 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Container, Img, Box } from './MovieItem.styled';
 import { Loader } from '../Loader/Loder'
-import { Suspense } from "react";
-
-
+import { Suspense } from 'react';
 
 export const MovieItem = ({ movieDetails }) => {
   const { poster_path, overview, title, release_date, vote_average, genres } =
@@ -36,15 +34,15 @@ export const MovieItem = ({ movieDetails }) => {
       </Container>
       <Box>
         <li>
-          <Link to="cast" >Cast</Link>
+          <Link to="cast">Cast</Link>
         </li>
         <li>
           <Link to="reviews">Reviews</Link>
         </li>
       </Box>
-<Suspense fallback={<Loader/>}>
+      <Suspense fallback={<Loader/>}>
         <Outlet />
-        </Suspense>
+      </Suspense>
     </main>
   );
 };

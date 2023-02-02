@@ -12,10 +12,11 @@ const Home = () => {
 
   useEffect(() => {
     async function APIfetchMovies() {
+      setIsLoading(true);
       try {
-        setIsLoading(true);
         const { results, total_pages } = await fetchTrendingMovie(page);
         setTotalPage(total_pages);
+
         if (results !== 0) {
           setmovies(results);
         }
@@ -39,13 +40,15 @@ const Home = () => {
     <>
       <h2>Trending today</h2>
       {isLoading && <Loader />}
-      <MovieList movies={movies} />
-     {!isLoading && <Buttons
-        previousPage={onPreviousPage}
-        nextPage={onNextPage}
-        page={page}
-        totalPages={totalPages}
-      />}
+      {movies.length  > 0 &&<MovieList movies={movies} />}
+      {!totalPages && (
+        <Buttons
+          previousPage={onPreviousPage}
+          nextPage={onNextPage}
+          page={page}
+          totalPages={totalPages}
+        />
+      )}
     </>
   );
 };
