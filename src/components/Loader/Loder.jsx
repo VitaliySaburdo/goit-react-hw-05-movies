@@ -13,6 +13,9 @@ export const Loader = () => {
       }}
       visible={true}
       ariaLabel="three-circles-rotating"
+      outerCircleColor="red"
+      innerCircleColor="yellow"
+      middleCircleColor="blue"
     />
   );
 };
