@@ -40,7 +40,7 @@ export const SearchForm = ({ onSubmit }) => {
         />
       </Form>
       <div>
-        <ToastContainer position="top-center" />
+        <ToastContainer position="top-left" />
       </div>
     </>
   );
