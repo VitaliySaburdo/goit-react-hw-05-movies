@@ -4,6 +4,7 @@ import { SearchForm } from '../components/SearchForm/SearchForm';
 import { MovieList } from '../components/MovieList/MovieList';
 import { Buttons } from 'components/Buttons/Buttons';
 import { useSearchParams } from 'react-router-dom';
+import {Loader} from '../components/Loader/Loder'
 
 
 const Movies = () => {
@@ -11,6 +12,7 @@ const Movies = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(false)  
 
 
   const movieName = searchParams.get('query') ?? '';
@@ -24,9 +26,12 @@ const Movies = () => {
         const { total_pages, results } = await getFilmSearch(movieName, page);
         setTotalPage(total_pages);
         setMovies(results);
+        setIsLoading(true)
       } catch (error) {
         console.log(error);
-      } 
+      } finally {
+        setIsLoading(false)
+      }
     }
     APIfetchMovies();
   }, [movieName, page, movies]);
@@ -44,6 +49,7 @@ const Movies = () => {
   return (
     <>
       <SearchForm onSubmit={formSubmitHendler} />
+      {isLoading && <Loader/>}
       {movies.length > 0 && <MovieList movies={movies} />}
       {(movies.length  === 0 && movieName) && <h2>Not find movies</h2>}
       {totalPages > 1 && (
