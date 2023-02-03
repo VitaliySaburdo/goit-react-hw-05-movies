@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Form, SearchFormButton, SearchFormInput } from './SearchForm.styled';
 import PropTypes from 'prop-types';
@@ -10,7 +10,6 @@ export const SearchForm = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (query.trim() === '') {
-      console.log(query)
       return toast('Please enter youre query');
     }
     onSubmit(query);
@@ -40,9 +39,6 @@ export const SearchForm = ({ onSubmit }) => {
           autoFocus
         />
       </Form>
-      <div>
-        <ToastContainer position="top-left" />
-      </div>
     </>
   );
 };
