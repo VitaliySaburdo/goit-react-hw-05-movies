@@ -22,14 +22,14 @@ const Movies = () => {
       if (movieName === '') {
         return;
       }
+       setIsLoading(true);
       try {
         const { total_pages, results } = await getFilmSearch(movieName, page);
         if (results.length !== 0) {
           setTotalPage(total_pages);
           setMovies(results);
-          setIsLoading(true);
         } else {
-          toast.warn(`Movies ${movieName} is not found`);
+         return toast.warn(`Movies ${movieName} is not found`);
         }
       } catch (error) {
         console.log(error);
