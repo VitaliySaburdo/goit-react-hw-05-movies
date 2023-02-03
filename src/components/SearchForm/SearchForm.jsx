@@ -10,6 +10,7 @@ export const SearchForm = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     if (query.trim() === '') {
+      console.log(query)
       return toast('Please enter youre query');
     }
     onSubmit(query);
