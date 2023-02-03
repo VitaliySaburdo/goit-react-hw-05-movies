@@ -38,7 +38,7 @@ const Movies = () => {
       }
     }
     APIfetchMovies();
-  }, [movieName, page, movies]);
+  }, [movieName, page]);
 
   const formSubmitHendler = query => {
     setSearchParams({ query });

@@ -27,7 +27,7 @@ const Home = () => {
       }
     }
     APIfetchMovies();
-  }, [page, totalPages]);
+  }, [page]);
 
   const onNextPage = () => {
     setPage(prevState => prevState + 1);
