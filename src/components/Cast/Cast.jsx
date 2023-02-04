@@ -20,7 +20,7 @@ const Cast = () => {
       }
     };
     APIfetchMovieCast(id);
-  }, [id, cast]);
+  }, [id]);
 
   if (!cast) return;
 

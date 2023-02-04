@@ -1,7 +1,7 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Container, Img, Box } from './MovieItem.styled';
 import { Loader } from '../Loader/Loder';
-import { Suspense } from 'react';
+import { Suspense, useRef } from 'react';
 import noPoster from '../../images/No_image_poster.png';
 import PropTypes from 'prop-types';
 
@@ -13,11 +13,11 @@ export const MovieItem = ({ movieDetails }) => {
   const userScore = vote_average.toFixed(1) * 10;
   const genresList = genres.map(genre => genre.name + ', ');
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
+  const locRef = useRef(location.state?.from ?? '/movies')
 
   return (
     <main>
-      <Link to={backLinkHref}>Go Back</Link>
+      <Link to={locRef.current}>Go Back</Link>
       <Container>
         <Img
           src={poster_path ? `https://image.tmdb.org/t/p/w500${poster_path}` : noPoster}
